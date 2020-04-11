@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { forOwn, isEqual, uniqWith } from 'lodash'
+import { findIndex, forOwn, isEqual, uniqWith } from 'lodash'
 
 @Component({
   selector: 'app-root',
@@ -78,6 +78,9 @@ export class AppComponent {
 
     if (this.BOYS_NAMES.length !== 0) throw Error('oops boys')
     if (this.GIRLS_NAMES.length !== 0) throw Error('oops girls')
+
+    const hueIndex = findIndex(this.people, {name: 'Hue'})
+    this.people.splice(0, 0, this.people.splice(hueIndex, 1)[0])
   }
 
   private populatePeople() {
